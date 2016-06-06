@@ -1,1 +1,1 @@
-# Lock-free-Memory-Allocator
+# Dynamic-Memory-Allocator
