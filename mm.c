@@ -226,13 +226,13 @@ void *mm_realloc(void *ptr, size_t size)
 	size_t asize = MAX(ALIGN(size) + DSIZE, MIN_BLOCK_SIZE);
 	/* If size <= 0 then this is just free, and we return NULL. */
 	if(size <= 0) {
-		free(ptr);
+		mm_free(ptr);
 		return 0;
 	}
 
 	/* If oldptr is NULL, then this is just malloc. */
 	if(ptr == NULL) {
-		return malloc(size);
+		return mm_malloc(size);
 	}
 
 	/* Get the size of the original block */
@@ -255,11 +255,11 @@ void *mm_realloc(void *ptr, size_t size)
 		PUT(HDRP(ptr), PACK(size, 1));
 		PUT(FTRP(ptr), PACK(size, 1));
 		PUT(HDRP(NEXT_BLKP(ptr)), PACK(oldsize-size, 1));
-		free(NEXT_BLKP(ptr));
+		mm_free(NEXT_BLKP(ptr));
 		return ptr;
 	}
 
-	newptr = malloc(size);
+	newptr = mm_malloc(size);
 
 	/* If realloc() fails the original block is left untouched  */
 	if(!newptr) {
@@ -271,7 +271,7 @@ void *mm_realloc(void *ptr, size_t size)
 	memcpy(newptr, ptr, oldsize);
 
 	/* Free the old block. */
-	free(ptr);
+	mm_free(ptr);
 
 	return newptr;
 }
