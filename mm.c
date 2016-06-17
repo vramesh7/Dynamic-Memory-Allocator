@@ -350,7 +350,7 @@ static void place(void *bp, size_t asize)
  * Function Name:	find_fit
  * Argument:		Size of block
  * Return Type: 	pointer to block
- * Description:		Search for the first block in the implicit free-list that fits and satisfies the allocation request and return the 				pointer for that block.
+ * Description:		Search for the first block in the explicit free-list that fits and satisfies the allocation request and return the 				pointer for that block.
  */
 
 static void *find_fit(size_t asize)
