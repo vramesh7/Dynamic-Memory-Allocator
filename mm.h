@@ -36,7 +36,7 @@ extern void *mm_realloc(void *ptr, size_t size);
 #define FREE_NEXT(bp)(*(void **)(bp + DSIZE))
 #define FREE_PREV(bp)(*(void **)(bp))
 
-#define MINIMUM		24			/* Min block size to contain pointers and boundary tags*/
+/* Min block size to contain pointers and boundary tags*/
 #define MIN_BLOCK_SIZE		24
 
 /*******************************************/
