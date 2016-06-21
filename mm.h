@@ -31,11 +31,7 @@ extern void *mm_realloc(void *ptr, size_t size);
 #define PREV_BLKP(bp)		((void *)(bp) - GET_SIZE(((void *)(bp) - DSIZE)))	//compute address of previous block
 
 
-//#define NEXT_BLKP(bp)  ((void *)(bp) + GET_SIZE(HDRP(bp)))
-//#define PREV_BLKP(bp)  ((void *)(bp) - GET_SIZE(HDRP(bp) - WSIZE))
 
-#define NEXT_FREEP(bp)(*(void **)(bp + DSIZE))
-#define PREV_FREEP(bp)(*(void **)(bp))
 
 #define FREE_NEXT(bp)(*(void **)(bp + DSIZE))
 #define FREE_PREV(bp)(*(void **)(bp))
