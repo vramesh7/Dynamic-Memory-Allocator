@@ -227,7 +227,7 @@ void *mm_realloc(void *ptr, size_t size)
 	/* If size <= 0 then this is just free, and we return NULL. */
 	if(size <= 0) {
 		mm_free(ptr);
-		return 0;
+		return NULL;
 	}
 
 	/* If oldptr is NULL, then this is just malloc. */
